@@ -4,10 +4,10 @@ import java.util.Collection;
 
 public abstract class PassiveElement implements PathElement{
     private double timeDeleay;
-    double costs;
-    Collection<PathElement> connections;
-    String info;
-    Integer id;
+    private double costs;
+    private Collection<PathElement> connections;
+    private String info;
+    private Integer id;
 
 
 
