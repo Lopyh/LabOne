@@ -15,7 +15,7 @@ public class Creator {
         PathElement firewall = new Firewall(200.0, 15.0, "First firewall", 4, "192.168.0.3");
         PathElement pc2 = new PC(50.0, 30.0, "PC 2", 5, "192.168.0.3");
 
-        //ПОдключение
+        //Схема подключения
         //(4)Firewall ---- (1)PC1
         //    |             |
         //    |             |
@@ -39,6 +39,10 @@ public class Creator {
         network.setPathElement(switch1);
         network.setPathElement(router1);
         network.setPathElement(firewall);
+
+        /**************************************************/
+        /** Тут задается network, начальный и конечный ID**/
+        /**************************************************/
 
         FinderByAllWays.getRoute(network, 1, 5);
 
