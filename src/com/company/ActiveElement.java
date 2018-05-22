@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ActiveElement implements PathElement{
+public class ActiveElement implements PathElement, Serializable{
     private String IP;
     private double timeDeleay;
     private double costs;

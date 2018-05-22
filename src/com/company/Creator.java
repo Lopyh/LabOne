@@ -1,14 +1,20 @@
 package com.company;
 
+import com.company.serialization.*;
+
 import com.company.active.Firewall;
 import com.company.active.PC;
 import com.company.active.Router;
 import com.company.active.Switch;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class Creator {
 
     /**public PC(double timeDeleay, double costs, String info, Integer id, String ip)*/
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         PathElement pc1 = new PC(100.0, 5.0, "First PC", 1, "192.168.0.0");
         PathElement router1 =  new Router(50.0, 10.0, "Router1", 2, "192.168.0.1");
         PathElement switch1 = new Switch(60.0, 8.0, "Switch 1", 3, "192.168.0.2");
@@ -32,6 +38,7 @@ public class Creator {
 
 
         //Создание сети и добавление элементов в нее
+
         Network network = new Network();
 
         network.setPathElement(pc1);
@@ -43,6 +50,13 @@ public class Creator {
         /**************************************************/
         /** Тут задается network, начальный и конечный ID**/
         /**************************************************/
+
+        SerializationFile.toFile(network);
+
+
+        Network net = SerializationFile.fromFile("network.bin");
+
+
 
         FinderByAllWays.getRoute(network, 1, 5);
 

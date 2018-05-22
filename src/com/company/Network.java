@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Network {
+public class Network implements Serializable{
 
     private HashMap<String, PathElement> pathElements =  new HashMap<>();
 
