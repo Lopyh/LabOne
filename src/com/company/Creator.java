@@ -6,7 +6,13 @@ import com.company.active.Firewall;
 import com.company.active.PC;
 import com.company.active.Router;
 import com.company.active.Switch;
+import sun.nio.ch.Net;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -14,7 +20,7 @@ import java.io.ObjectOutputStream;
 public class Creator {
 
     /**public PC(double timeDeleay, double costs, String info, Integer id, String ip)*/
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, JAXBException {
         PathElement pc1 = new PC(100.0, 5.0, "First PC", 1, "192.168.0.0");
         PathElement router1 =  new Router(50.0, 10.0, "Router1", 2, "192.168.0.1");
         PathElement switch1 = new Switch(60.0, 8.0, "Switch 1", 3, "192.168.0.2");
@@ -51,16 +57,51 @@ public class Creator {
         /** Тут задается network, начальный и конечный ID**/
         /**************************************************/
 
+
+        /**Сериализация*/
         SerializationFile.toFile(network);
 
-
+        /**Десериализация*/
         Network net = SerializationFile.fromFile("network.bin");
 
+        /**Сохранение в XML*/
+        String fileName = "network.xml";
+
+        convertObjectToXml(network, fileName);
+
+        /**Поис пути*/
+//        FinderByAllWays.getRoute(network, 1, 5);
 
 
-        FinderByAllWays.getRoute(network, 1, 5);
+    }
 
 
+    private static Network fromXmlToObject(String filePath) {
+        try {
+            // создаем объект JAXBContext - точку входа для JAXB
+            JAXBContext jaxbContext = JAXBContext.newInstance(Network.class);
+            Unmarshaller un = jaxbContext.createUnmarshaller();
+
+            return (Network) un.unmarshal(new File(filePath));
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    private static void convertObjectToXml(Network network, String fileName) throws JAXBException {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Network.class);
+            Marshaller marshaller = context.createMarshaller();
+            // устанавливаем флаг для читабельного вывода XML в JAXB
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+            // маршаллинг объекта в файл
+            marshaller.marshal(network, new File(fileName));
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
 

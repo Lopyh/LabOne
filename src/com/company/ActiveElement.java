@@ -1,10 +1,12 @@
 package com.company;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ActiveElement implements PathElement, Serializable{
+@XmlRootElement(name = "ActiveElement")
+public abstract class ActiveElement implements PathElement, Serializable{
     private String IP;
     private double timeDeleay;
     private double costs;
