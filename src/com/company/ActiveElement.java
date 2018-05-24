@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public abstract class ActiveElement implements PathElement, Serializable{
     Collection<String> listIP =  new ArrayList<>();
     private String info;
     private Integer id;
+
+    public ActiveElement() {
+    }
 
     public void setConnection(ActiveElement connection) {
         connections.add(connection);
@@ -39,11 +43,13 @@ public abstract class ActiveElement implements PathElement, Serializable{
     }
 
     @Override
+    @XmlElement
     public double getTimeDelay() {
         return timeDeleay;
     }
 
     @Override
+    @XmlElement
     public double getCosts() {
         return costs;
     }
@@ -54,11 +60,13 @@ public abstract class ActiveElement implements PathElement, Serializable{
     }
 
     @Override
+    @XmlElement
     public String getInfo() {
         return info;
     }
 
     @Override
+    @XmlElement
     public Integer getID() {
         return id;
     }

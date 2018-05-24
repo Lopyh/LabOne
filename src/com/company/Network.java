@@ -1,6 +1,6 @@
 package com.company;
 
-import javax.xml.bind.annotation.XmlAttribute;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -17,6 +17,7 @@ public class Network implements Serializable{
         this.pathElements.put(pathElement.getID().toString(), pathElement);
     }
 
+    @XmlElement
     public HashMap<String, PathElement> getPathElements() {
         return pathElements;
     }

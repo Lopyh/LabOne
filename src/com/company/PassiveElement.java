@@ -1,7 +1,9 @@
 package com.company;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Collection;
 
+@XmlRootElement(name = "PassiveElement")
 public abstract class PassiveElement implements PathElement{
     private double timeDeleay;
     private double costs;
@@ -33,6 +35,7 @@ public abstract class PassiveElement implements PathElement{
 
     @Override
     public Integer getID() {
+        Integer id = this.id;
         return id;
     }
 }

@@ -1,7 +1,9 @@
 package com.company;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElements;
 import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
+
 
 public interface PathElement {
     double getTimeDelay();

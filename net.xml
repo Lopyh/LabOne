@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Network>
+    <pathElements>
+        <entry>
+            <key>1</key>
+            <value>
+                <costs>5.0</costs>
+                <ID>1</ID>
+                <info>First PC</info>
+                <timeDelay>100.0</timeDelay>
+            </value>
+        </entry>
+        <entry>
+            <key>2</key>
+            <value>
+                <costs>10.0</costs>
+                <ID>2</ID>
+                <info>Router1</info>
+                <timeDelay>50.0</timeDelay>
+            </value>
+        </entry>
+        <entry>
+            <key>3</key>
+            <value>
+                <costs>8.0</costs>
+                <ID>3</ID>
+                <info>Switch 1</info>
+                <timeDelay>60.0</timeDelay>
+            </value>
+        </entry>
+        <entry>
+            <key>4</key>
+            <value>
+                <costs>15.0</costs>
+                <ID>4</ID>
+                <info>First firewall</info>
+                <timeDelay>200.0</timeDelay>
+            </value>
+        </entry>
+        <entry>
+            <key>5</key>
+            <value>
+                <costs>30.0</costs>
+                <ID>5</ID>
+                <info>PC 2</info>
+                <timeDelay>50.0</timeDelay>
+            </value>
+        </entry>
+    </pathElements>
+</Network>

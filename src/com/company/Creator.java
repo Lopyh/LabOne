@@ -6,16 +6,10 @@ import com.company.active.Firewall;
 import com.company.active.PC;
 import com.company.active.Router;
 import com.company.active.Switch;
-import sun.nio.ch.Net;
-
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+
+
 
 public class Creator {
 
@@ -45,6 +39,8 @@ public class Creator {
 
         //Создание сети и добавление элементов в нее
 
+
+
         Network network = new Network();
 
         network.setPathElement(pc1);
@@ -67,7 +63,16 @@ public class Creator {
         /**Сохранение в XML*/
         String fileName = "network.xml";
 
-        convertObjectToXml(network, fileName);
+
+        HashMapTest f =  new HashMapTest();
+
+        f.asd = "asdf";
+
+        f.setA(23);
+
+        f.hashMap.put("sadf","sdf");
+
+        XMLFile.convertObjectToXml(network, fileName);
 
         /**Поис пути*/
 //        FinderByAllWays.getRoute(network, 1, 5);
@@ -76,33 +81,7 @@ public class Creator {
     }
 
 
-    private static Network fromXmlToObject(String filePath) {
-        try {
-            // создаем объект JAXBContext - точку входа для JAXB
-            JAXBContext jaxbContext = JAXBContext.newInstance(Network.class);
-            Unmarshaller un = jaxbContext.createUnmarshaller();
 
-            return (Network) un.unmarshal(new File(filePath));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-    private static void convertObjectToXml(Network network, String fileName) throws JAXBException {
-        try {
-            JAXBContext context = JAXBContext.newInstance(Network.class);
-            Marshaller marshaller = context.createMarshaller();
-            // устанавливаем флаг для читабельного вывода XML в JAXB
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-            // маршаллинг объекта в файл
-            marshaller.marshal(network, new File(fileName));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-    }
 
 
 }
