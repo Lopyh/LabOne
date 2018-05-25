@@ -19,22 +19,29 @@ public class Creator {
         PathElement router1 =  new Router(50.0, 10.0, "Router1", 2, "192.168.0.1");
         PathElement switch1 = new Switch(60.0, 8.0, "Switch 1", 3, "192.168.0.2");
         PathElement firewall = new Firewall(200.0, 15.0, "First firewall", 4, "192.168.0.3");
-        PathElement pc2 = new PC(50.0, 30.0, "PC 2", 5, "192.168.0.3");
+        PathElement pc2 = new PC(50.0, 30.0, "PC 2", 5, "192.168.0.4");
+        PathElement pc3 = new PC(30.0, 10.0, "PC 3", 6, "192.168.0.5");
+        PathElement router2 = new Router(30.0, 20.0, "PC 3", 7, "192.168.0.5");
+
 
         //Схема подключения
         //(4)Firewall ---- (1)PC1
         //    |             |
         //    |             |
-        //(2)Router ------ (3)Switch
-        //                   |
-        //                   |
-        //                 (5)PC2
+        //(2)Router1 ------ (3)Switch1----(6)PC3
+        //                   |              |
+        //                   |              |
+        //                 (5)PC2 -------(7)Router2
 
         ((Switch) switch1).setConnection((ActiveElement) pc2);
         ((PC) pc1).setConnection((ActiveElement) firewall);
         ((PC) pc1).setConnection((ActiveElement) switch1);
         ((Firewall) firewall).setConnection((ActiveElement) router1);
         ((Router) router1).setConnection((ActiveElement) switch1);
+        ((PC) pc3).setConnection((ActiveElement) switch1);
+        ((Router) router2).setConnection((ActiveElement) pc3);
+        ((Router) router2).setConnection((ActiveElement) pc2);
+        
 
 
         //Создание сети и добавление элементов в нее
@@ -48,6 +55,8 @@ public class Creator {
         network.setPathElement(switch1);
         network.setPathElement(router1);
         network.setPathElement(firewall);
+        network.setPathElement(pc3);
+        network.setPathElement(router2);
 
         /**************************************************/
         /** Тут задается network, начальный и конечный ID**/
@@ -72,16 +81,11 @@ public class Creator {
 
         f.hashMap.put("sadf","sdf");
 
-        XMLFile.convertObjectToXml(network, fileName);
+        //XMLFile.convertObjectToXml(network, fileName);
 
         /**Поис пути*/
-//        FinderByAllWays.getRoute(network, 1, 5);
+        FinderByAllWays.getRoute(network, 4, 7);
 
 
     }
-
-
-
-
-
 }

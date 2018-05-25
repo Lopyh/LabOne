@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @XmlRootElement(name = "ActiveElement")
-public abstract class ActiveElement implements PathElement, Serializable{
+public abstract class  ActiveElement <T extends ActiveElement> implements PathElement, Serializable{
     private String IP;
     private double timeDeleay;
     private double costs;
@@ -19,10 +19,10 @@ public abstract class ActiveElement implements PathElement, Serializable{
     public ActiveElement() {
     }
 
-    public void setConnection(ActiveElement connection) {
+    public void setConnection(T connection) {
         connections.add(connection);
         listIP.add(connection.getIP());
-        connection.connections.add(this);
+        connection.getConnections().add(this);
         connection.listIP.add(this.getIP());
     }
 
