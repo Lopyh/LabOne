@@ -1,6 +1,4 @@
-package com.company.serialization;
-
-import com.company.Network;
+package com.company.TEST;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -8,16 +6,14 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
-
-public class XMLFile {
-
-    private static Network fromXmlToObject(String filePath) {
+public class TestXML {
+    private static HashMapTest fromXmlToObject(String filePath) {
         try {
             // создаем объект JAXBContext - точку входа для JAXB
-            JAXBContext jaxbContext = JAXBContext.newInstance(Network.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(HashMapTest.class);
             Unmarshaller un = jaxbContext.createUnmarshaller();
 
-            return (Network) un.unmarshal(new File(filePath));
+            return (HashMapTest) un.unmarshal(new File(filePath));
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -25,9 +21,9 @@ public class XMLFile {
     }
 
 
-    public static void convertObjectToXml(Network network, String fileName) throws JAXBException {
+    public static void convertObjectToXml(HashMapTest network, String fileName) throws JAXBException {
         try {
-            JAXBContext context = JAXBContext.newInstance(Network.class);
+            JAXBContext context = JAXBContext.newInstance(HashMapTest.class);
             Marshaller marshaller = context.createMarshaller();
             // устанавливаем флаг для читабельного вывода XML в JAXB
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

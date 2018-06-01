@@ -1,11 +1,16 @@
 package com.company;
 
-import com.company.serialization.*;
+import com.company.TEST.HashMapTest;
+import com.company.TEST.TestClass;
+import com.company.TEST.TestIntarface;
+import com.company.TEST.TestXML;
 
 import com.company.active.Firewall;
 import com.company.active.PC;
 import com.company.active.Router;
 import com.company.active.Switch;
+import com.company.serialization.XMLFile;
+
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 
@@ -41,7 +46,7 @@ public class Creator {
         ((PC) pc3).setConnection((ActiveElement) switch1);
         ((Router) router2).setConnection((ActiveElement) pc3);
         ((Router) router2).setConnection((ActiveElement) pc2);
-        
+
 
 
         //Создание сети и добавление элементов в нее
@@ -64,27 +69,26 @@ public class Creator {
 
 
         /**Сериализация*/
-        SerializationFile.toFile(network);
+      //  SerializationFile.toFile(network);
 
         /**Десериализация*/
-        Network net = SerializationFile.fromFile("network.bin");
+        //Network net = SerializationFile.fromFile("network.bin");
 
         /**Сохранение в XML*/
         String fileName = "network.xml";
 
+//Testing
+//        HashMapTest f =  new HashMapTest();
+//        f.asd = "asdf";
+//        f.setA(23);
+//        TestClass t = new TestClass(1);
+//        f.hashMap.put(t,"sdf");
+//        TestXML.convertObjectToXml(f,"testXML.xml");
 
-        HashMapTest f =  new HashMapTest();
-
-        f.asd = "asdf";
-
-        f.setA(23);
-
-        f.hashMap.put("sadf","sdf");
-
-        //XMLFile.convertObjectToXml(network, fileName);
+        XMLFile.convertObjectToXml(network, fileName);
 
         /**Поис пути*/
-        FinderByAllWays.getRoute(network, 4, 7);
+        //FinderByAllWays.getRoute(network, 4, 7);
 
 
     }

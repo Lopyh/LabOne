@@ -1,15 +1,14 @@
-package com.company;
+package com.company.TEST;
 
-import javax.xml.bind.annotation.XmlAnyElement;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.HashMap;
 
 @XmlRootElement
 public class HashMapTest {
 
-    @XmlElement
-    HashMap<String, String> hashMap = new HashMap<>();
+
+
+    public HashMap<TestIntarface, String> hashMap = new HashMap<>();
 
     public String asd;
 

@@ -1,13 +1,16 @@
 package com.company;
 
+import com.company.serialization.CollectionsAdapter;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@XmlRootElement(name = "ActiveElement")
+@XmlRootElement
 public abstract class  ActiveElement <T extends ActiveElement> implements PathElement, Serializable{
+
     private String IP;
     private double timeDeleay;
     private double costs;
@@ -30,6 +33,7 @@ public abstract class  ActiveElement <T extends ActiveElement> implements PathEl
         connections.add(connection);
     }
 
+    @XmlElement
     public String getIP() {
         return IP;
     }
@@ -55,6 +59,7 @@ public abstract class  ActiveElement <T extends ActiveElement> implements PathEl
     }
 
     @Override
+    @XmlJavaTypeAdapter(CollectionsAdapter.class)
     public Collection<PathElement> getConnections() {
         return connections;
     }

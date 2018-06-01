@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<network>
+    <pathElements>
+        <item>
+            <connections/>
+            <costs>5.0</costs>
+            <ID>1</ID>
+            <IP>192.168.0.0</IP>
+            <info>First PC</info>
+            <timeDelay>100.0</timeDelay>
+        </item>
+        <item>
+            <connections/>
+            <costs>10.0</costs>
+            <ID>2</ID>
+            <IP>192.168.0.1</IP>
+            <info>Router1</info>
+            <timeDelay>50.0</timeDelay>
+        </item>
+        <item>
+            <connections/>
+            <costs>8.0</costs>
+            <ID>3</ID>
+            <IP>192.168.0.2</IP>
+            <info>Switch 1</info>
+            <timeDelay>60.0</timeDelay>
+        </item>
+        <item>
+            <connections/>
+            <costs>15.0</costs>
+            <ID>4</ID>
+            <IP>192.168.0.3</IP>
+            <info>First firewall</info>
+            <timeDelay>200.0</timeDelay>
+        </item>
+        <item>
+            <connections/>
+            <costs>30.0</costs>
+            <ID>5</ID>
+            <IP>192.168.0.4</IP>
+            <info>PC 2</info>
+            <timeDelay>50.0</timeDelay>
+        </item>
+        <item>
+            <connections/>
+            <costs>10.0</costs>
+            <ID>6</ID>
+            <IP>192.168.0.5</IP>
+            <info>PC 3</info>
+            <timeDelay>30.0</timeDelay>
+        </item>
+        <item>
+            <connections/>
+            <costs>20.0</costs>
+            <ID>7</ID>
+            <IP>192.168.0.5</IP>
+            <info>PC 3</info>
+            <timeDelay>30.0</timeDelay>
+        </item>
+    </pathElements>
+</network>

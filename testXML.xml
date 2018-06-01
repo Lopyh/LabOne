@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hashMapTest>
+    <hashMap>
+        <entry>
+            <key>
+                <a>1</a>
+            </key>
+            <value>sdf</value>
+        </entry>
+    </hashMap>
+    <asd>asdf</asd>
+    <a>23</a>
+</hashMapTest>
