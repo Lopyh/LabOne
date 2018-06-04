@@ -1,61 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <network>
     <pathElements>
-        <item>
-            <connections/>
-            <costs>5.0</costs>
-            <ID>1</ID>
-            <IP>192.168.0.0</IP>
-            <info>First PC</info>
-            <timeDelay>100.0</timeDelay>
-        </item>
-        <item>
-            <connections/>
-            <costs>10.0</costs>
-            <ID>2</ID>
-            <IP>192.168.0.1</IP>
-            <info>Router1</info>
-            <timeDelay>50.0</timeDelay>
-        </item>
-        <item>
-            <connections/>
-            <costs>8.0</costs>
-            <ID>3</ID>
-            <IP>192.168.0.2</IP>
-            <info>Switch 1</info>
-            <timeDelay>60.0</timeDelay>
-        </item>
-        <item>
-            <connections/>
-            <costs>15.0</costs>
-            <ID>4</ID>
-            <IP>192.168.0.3</IP>
-            <info>First firewall</info>
-            <timeDelay>200.0</timeDelay>
-        </item>
-        <item>
-            <connections/>
-            <costs>30.0</costs>
-            <ID>5</ID>
-            <IP>192.168.0.4</IP>
-            <info>PC 2</info>
-            <timeDelay>50.0</timeDelay>
-        </item>
-        <item>
-            <connections/>
-            <costs>10.0</costs>
-            <ID>6</ID>
-            <IP>192.168.0.5</IP>
-            <info>PC 3</info>
-            <timeDelay>30.0</timeDelay>
-        </item>
-        <item>
-            <connections/>
-            <costs>20.0</costs>
-            <ID>7</ID>
-            <IP>192.168.0.5</IP>
-            <info>PC 3</info>
-            <timeDelay>30.0</timeDelay>
-        </item>
+        <entry>
+            <key>1</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pc">
+                <ID>1</ID>
+                <IP>192.168.0.0</IP>
+                <timeDelay>100.0</timeDelay>
+                <costs>5.0</costs>
+                <info>First PC</info>
+                <listIP>192.168.0.3</listIP>
+                <listIP>192.168.0.2</listIP>
+                <name>com.company.active.PC</name>
+                <pcName>Intel Core i7</pcName>
+            </value>
+        </entry>
+        <entry>
+            <key>2</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="router">
+                <ID>2</ID>
+                <IP>192.168.0.1</IP>
+                <timeDelay>50.0</timeDelay>
+                <costs>10.0</costs>
+                <info>Router1</info>
+                <listIP>192.168.0.3</listIP>
+                <listIP>192.168.0.2</listIP>
+                <name>com.company.active.Router</name>
+            </value>
+        </entry>
+        <entry>
+            <key>3</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="switch">
+                <ID>3</ID>
+                <IP>192.168.0.2</IP>
+                <timeDelay>60.0</timeDelay>
+                <costs>8.0</costs>
+                <info>Switch 1</info>
+                <listIP>192.168.0.4</listIP>
+                <listIP>192.168.0.0</listIP>
+                <listIP>192.168.0.1</listIP>
+                <listIP>192.168.0.5</listIP>
+                <name>com.company.active.Switch</name>
+            </value>
+        </entry>
+        <entry>
+            <key>4</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="firewall">
+                <ID>4</ID>
+                <IP>192.168.0.3</IP>
+                <timeDelay>200.0</timeDelay>
+                <costs>15.0</costs>
+                <info>First firewall</info>
+                <listIP>192.168.0.0</listIP>
+                <listIP>192.168.0.1</listIP>
+                <name>com.company.active.Firewall</name>
+            </value>
+        </entry>
+        <entry>
+            <key>5</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pc">
+                <ID>5</ID>
+                <IP>192.168.0.4</IP>
+                <timeDelay>50.0</timeDelay>
+                <costs>30.0</costs>
+                <info>PC 2</info>
+                <listIP>192.168.0.2</listIP>
+                <listIP>192.168.0.5</listIP>
+                <name>com.company.active.PC</name>
+                <pcName>Intel Core i7</pcName>
+            </value>
+        </entry>
+        <entry>
+            <key>6</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="pc">
+                <ID>6</ID>
+                <IP>192.168.0.5</IP>
+                <timeDelay>30.0</timeDelay>
+                <costs>10.0</costs>
+                <info>PC 3</info>
+                <listIP>192.168.0.2</listIP>
+                <listIP>192.168.0.5</listIP>
+                <name>com.company.active.PC</name>
+                <pcName>Intel Core i7</pcName>
+            </value>
+        </entry>
+        <entry>
+            <key>7</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="router">
+                <ID>7</ID>
+                <IP>192.168.0.5</IP>
+                <timeDelay>30.0</timeDelay>
+                <costs>20.0</costs>
+                <info>PC 3</info>
+                <listIP>192.168.0.5</listIP>
+                <listIP>192.168.0.4</listIP>
+                <name>com.company.active.Router</name>
+            </value>
+        </entry>
     </pathElements>
 </network>

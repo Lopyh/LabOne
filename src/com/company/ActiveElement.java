@@ -1,23 +1,47 @@
 package com.company;
 
-import com.company.serialization.CollectionsAdapter;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.company.active.Firewall;
+import com.company.active.PC;
+import com.company.active.Router;
+import com.company.active.Switch;
+
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"ID", "IP", "timeDelay", "costs", "info", "listIP", "name"})
+@XmlSeeAlso({PC.class,Router.class,Switch.class,Firewall.class})
 public abstract class  ActiveElement <T extends ActiveElement> implements PathElement, Serializable{
+
+
+    String name = this.getClass().getName();
+
+    @XmlElement
+    public String getName() {
+        return name;
+    }
 
     private String IP;
     private double timeDeleay;
     private double costs;
-    private Collection<PathElement> connections = new ArrayList<>();
-    Collection<String> listIP =  new ArrayList<>();
+    private Collection<ActiveElement> connections = new ArrayList<>();
+    public Collection<String> listIP =  new ArrayList<>();
     private String info;
     private Integer id;
+
+
+    @XmlElement
+    public Collection<String> getListIP() {
+        return listIP;
+    }
+
+    public void setListIP(Collection<String> listIP) {
+        this.listIP = listIP;
+    }
 
     public ActiveElement() {
     }
@@ -29,9 +53,6 @@ public abstract class  ActiveElement <T extends ActiveElement> implements PathEl
         connection.listIP.add(this.getIP());
     }
 
-    public void setConnection(PassiveElement connection) {
-        connections.add(connection);
-    }
 
     @XmlElement
     public String getIP() {
@@ -58,16 +79,20 @@ public abstract class  ActiveElement <T extends ActiveElement> implements PathEl
         return costs;
     }
 
-    @Override
-    @XmlJavaTypeAdapter(CollectionsAdapter.class)
-    public Collection<PathElement> getConnections() {
-        return connections;
-    }
 
     @Override
     @XmlElement
     public String getInfo() {
         return info;
+    }
+
+    public void setConnections(Collection<ActiveElement> connections) {
+        this.connections = connections;
+    }
+
+    @Override
+    public Collection<ActiveElement> getConnections() {
+        return connections;
     }
 
     @Override

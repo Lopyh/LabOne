@@ -23,10 +23,6 @@ public abstract class PassiveElement implements PathElement{
         return costs;
     }
 
-    @Override
-    public Collection<PathElement> getConnections() {
-        return connections;
-    }
 
     @Override
     public String getInfo() {

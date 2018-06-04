@@ -1,5 +1,6 @@
 package com.company.serialization;
 
+import com.company.ActiveElement;
 import com.company.Network;
 
 import javax.xml.bind.JAXBContext;
@@ -7,17 +8,21 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.HashMap;
 
 
 public class XMLFile {
 
-    private static Network fromXmlToObject(String filePath) {
+    public static Network fromXmlToObject(String filePath) {
         try {
             // создаем объект JAXBContext - точку входа для JAXB
             JAXBContext jaxbContext = JAXBContext.newInstance(Network.class);
             Unmarshaller un = jaxbContext.createUnmarshaller();
 
-            return (Network) un.unmarshal(new File(filePath));
+            Network  net = (Network) un.unmarshal(new File(filePath));
+
+
+            return net;
         } catch (JAXBException e) {
             e.printStackTrace();
         }

@@ -10,6 +10,9 @@ import java.util.Collection;
 @XmlRootElement(name = "Switch")
 public class Switch extends ActiveElement implements Serializable {
 
+    public Switch() {
+    }
+
     public Switch(double timeDeleay, double costs, String info, Integer id, String ip) {
         super(timeDeleay, costs, info, id, ip);
     }

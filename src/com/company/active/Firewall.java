@@ -9,6 +9,8 @@ import java.util.Collection;
 
 @XmlRootElement(name = "Firewall")
 public class Firewall extends ActiveElement implements Serializable {
+    public Firewall() {
+    }
 
     public Firewall(double timeDeleay, double costs, String info, Integer id, String ip) {
         super(timeDeleay, costs, info, id, ip);
