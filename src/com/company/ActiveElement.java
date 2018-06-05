@@ -13,28 +13,24 @@ import java.util.Collection;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"ID", "IP", "timeDelay", "costs", "info", "listIP", "name"})
+@XmlType(propOrder = {"ID", "IP", "timeDelay", "costs", "info", "listIP"})
 @XmlSeeAlso({PC.class,Router.class,Switch.class,Firewall.class})
 public abstract class  ActiveElement <T extends ActiveElement> implements PathElement, Serializable{
 
-
-    String name = this.getClass().getName();
-
     @XmlElement
-    public String getName() {
-        return name;
-    }
-
     private String IP;
-    private double timeDeleay;
+    @XmlElement
+    private double timeDelay;
+    @XmlElement
     private double costs;
     private Collection<ActiveElement> connections = new ArrayList<>();
-    public Collection<String> listIP =  new ArrayList<>();
-    private String info;
-    private Integer id;
-
-
     @XmlElement
+    private Collection<String> listIP =  new ArrayList<>();
+    @XmlElement
+    private String info;
+    @XmlElement
+    private Integer ID;
+
     public Collection<String> getListIP() {
         return listIP;
     }
@@ -50,38 +46,34 @@ public abstract class  ActiveElement <T extends ActiveElement> implements PathEl
         connections.add(connection);
         listIP.add(connection.getIP());
         connection.getConnections().add(this);
-        connection.listIP.add(this.getIP());
+        connection.getListIP().add(this.getIP());
     }
 
 
-    @XmlElement
     public String getIP() {
         return IP;
     }
 
-    public ActiveElement(double timeDeleay, double costs, String info, Integer id, String ip) {
-        this.timeDeleay = timeDeleay;
+    public ActiveElement(double timeDelay, double costs, String info, Integer ID, String ip) {
+        this.timeDelay = timeDelay;
         this.costs = costs;
         this.info = info;
-        this.id = id;
+        this.ID = ID;
         this.IP = ip;
     }
 
     @Override
-    @XmlElement
     public double getTimeDelay() {
-        return timeDeleay;
+        return timeDelay;
     }
 
     @Override
-    @XmlElement
     public double getCosts() {
         return costs;
     }
 
 
     @Override
-    @XmlElement
     public String getInfo() {
         return info;
     }
@@ -96,16 +88,17 @@ public abstract class  ActiveElement <T extends ActiveElement> implements PathEl
     }
 
     @Override
-    @XmlElement
     public Integer getID() {
-        return id;
+        return ID;
     }
+
+
 
     @Override
     public String toString() {
         return "ActiveElement{" +
                 "IP='" + IP + '\'' +
-                ", id=" + id +
+                ", id=" + ID +
                 '}';
     }
 }

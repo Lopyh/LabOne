@@ -26,7 +26,7 @@ public class Creator {
         ActiveElement firewall = new Firewall(200.0, 15.0, "First firewall", 4, "192.168.0.3");
         ActiveElement pc2 = new PC(50.0, 30.0, "PC 2", 5, "192.168.0.4");
         ActiveElement pc3 = new PC(30.0, 10.0, "PC 3", 6, "192.168.0.5");
-        ActiveElement router2 = new Router(30.0, 20.0, "PC 3", 7, "192.168.0.5");
+        ActiveElement router2 = new Router(30.0, 20.0, "PC 3", 7, "192.168.0.6");
 
 
         //Схема подключения
@@ -37,13 +37,12 @@ public class Creator {
         //                   |              |
         //                   |              |
         //                 (5)PC2 -------(7)Router2
-
-        ((Switch) switch1).setConnection((ActiveElement) pc2);
         ((PC) pc1).setConnection((ActiveElement) firewall);
         ((PC) pc1).setConnection((ActiveElement) switch1);
-        ((Firewall) firewall).setConnection((ActiveElement) router1);
-        ((Router) router1).setConnection((ActiveElement) switch1);
         ((PC) pc3).setConnection((ActiveElement) switch1);
+        ((Firewall) firewall).setConnection((ActiveElement) router1);
+        ((Switch) switch1).setConnection((ActiveElement) pc2);
+        ((Router) router1).setConnection((ActiveElement) switch1);
         ((Router) router2).setConnection((ActiveElement) pc3);
         ((Router) router2).setConnection((ActiveElement) pc2);
 
@@ -91,7 +90,7 @@ public class Creator {
 
         for (HashMap.Entry<String,ActiveElement> e: netFromXml.getPathElements().entrySet()
                 ) {
-            System.out.println(e.getValue());
+            System.out.println(e.getKey()+" "+e.getValue());
         }
 
 
